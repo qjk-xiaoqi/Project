@@ -13,7 +13,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.vue', '.json'],
     alias: {
-      '@': '../components/',
+       
     }
   },
   module: {
@@ -43,6 +43,17 @@ module.exports = {
               
             test: /\.css$/,
             use: ['vue-style-loader', 'css-loader']
+          },
+          {
+            test: /\.(png|jpg|gif)$/,
+            use: [
+              {
+                loader: 'url-loader',
+                options: {
+                  limit: 8192
+                }
+              }
+            ]
           }
           
           
@@ -53,8 +64,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, '../index.html')
     }
-    
-
     )
   ]
 };
